@@ -2,7 +2,6 @@ package br.com.spassu.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import br.com.spassu.modelo.Cliente;
 
@@ -10,51 +9,21 @@ public class ClienteService {
 
 	private List<Cliente> listaClientes;
 
-	public void getMenu() {
+	
+	
+	public void getClientes() {
 
-		Scanner scan = new Scanner(System.in);
+		System.out.println("entrou!!!!!!!");
 
-		System.out.println("Adicione os dados do cliente");
-		String line = scan.nextLine();
-
-		String[] textoSeparado = line.split(";");
-		int menu = Integer.parseInt(textoSeparado[0]);
-
-		switch (menu) {
-		case 0:
-			break;
-		case 1:
-			getClientes();
-			break;
-		case 2:
-			setClientes(line);
-			break;
-		case 3:
-			alteraCliente (line);
-			break;
-		case 4:
-			excluirCliente(line);
-			break;
-		case 5:
-			consultarCliente(line);
-			break;
-		case 6:
-			break;
-		case 7:
-			break;
-		case 8:
-			break;
-		case 9:
-			System.exit(0);
-			break;
-
-		default:
-			System.out.println("Valor Invalido"); getMenu();
-			break;
+		for (int i = 0; i < listaClientes.size(); i++) {
+			System.out.println("teste");
+			System.out.println("| " + listaClientes.get(i).getId() + " |" + listaClientes.get(i).getNome() + " |"
+					+ listaClientes.get(i).getCidade() + " | ");
 		}
-
+		
 	}
-
+	
+	
 	public void setClientes(String valor) {
 
 		String[] textoSeparado = valor.split(";");
@@ -73,25 +42,9 @@ public class ClienteService {
 
 		System.out.println(resposta);
 
-		getMenu();
-
-	
 	}
 
-	public void getClientes() {
 
-		System.out.println("entrou!!!!!!!");
-
-		for (int i = 0; i < listaClientes.size(); i++) {
-			System.out.println("teste");
-			System.out.println("| " + listaClientes.get(i).getId() + " |" + listaClientes.get(i).getNome() + " |"
-					+ listaClientes.get(i).getCidade() + " | ");
-
-		}
-		
-		getMenu();
-
-	}
 	
 	public void alteraCliente (String valor) {
 		
@@ -110,9 +63,6 @@ public class ClienteService {
 		
 		}
 		
-		getMenu();
-			
-
 	}
 	
 	public void excluirCliente(String valor) {
@@ -131,7 +81,7 @@ public class ClienteService {
 		
 		}
 		
-		getMenu();
+		
 		
 	}
 	
@@ -149,9 +99,7 @@ public class ClienteService {
 			}
 		
 		}
-				
-		getMenu();
-				
+					
 	}
 	
 
