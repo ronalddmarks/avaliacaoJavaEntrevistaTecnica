@@ -6,21 +6,36 @@ import java.util.List;
 import br.com.spassu.modelo.Cliente;
 
 public class ClienteService {
+	
+	ListaDeObjetos<Cliente> listaClientes = new ListaDeObjetos<Cliente>(0);
 
-	private List<Cliente> listaClientes;
-
+	Cliente umCliente;
 	
 	
 	public void getClientes() {
+		
+		
+		umCliente = listaClientes.recuperarPrimeiro();
+		
+		while (umCliente != null)  
+		{	
+				System.out.println ("| " + umCliente.getId() + 
+			                        " | " + umCliente.getNome() + 
+			                        " | " + umCliente.getCidade() + 
+			                        " |");
+		
+		
+		umCliente = listaClientes.recuperarProximo();
+		}
 
 		System.out.println("entrou!!!!!!!");
 
-		for (int i = 0; i < listaClientes.size(); i++) {
-			System.out.println("teste");
-			System.out.println("| " + listaClientes.get(i).getId() + " |" + listaClientes.get(i).getNome() + " |"
-					+ listaClientes.get(i).getCidade() + " | ");
-		}
-		
+//		for (int i = 0; i < listaClientes.size(); i++) {
+//			System.out.println("teste");
+//			System.out.println("| " + listaClientes.get(i).getId() + " |" + listaClientes.get(i).getNome() + " |"
+//					+ listaClientes.get(i).getCidade() + " | ");
+//		}
+	
 	}
 	
 	
@@ -29,16 +44,16 @@ public class ClienteService {
 		String[] textoSeparado = valor.split(";");
 
 //		 System.out.println(Arrays.toString(textoSeparado));
+		
+		int id = Integer.parseInt(textoSeparado[1].replaceAll(" ", ""));
+		String nome = textoSeparado[2].replaceAll(" ", "");
+		String cidade = textoSeparado[3].replaceAll(" ", "");
+	
+		umCliente  = new Cliente(id, nome, cidade);
+		
+	    listaClientes.adicionar(umCliente);
 
-		Cliente cliente = new Cliente();
-		cliente.setId(Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
-		cliente.setNome(textoSeparado[2]);
-		cliente.setCidade(textoSeparado[3]);
-
-		List<Cliente> listaClientes = new ArrayList<Cliente>();
-		listaClientes.add(cliente);
-
-		String resposta = "Cliente " + textoSeparado[1] + " incluído";
+		String resposta = "Cliente " + umCliente.getId() + " incluído";
 
 		System.out.println(resposta);
 

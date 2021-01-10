@@ -8,9 +8,19 @@ public class Cliente {
 
 	// construtor
 
+
+	public Cliente(Integer id, String nome, String cidade) {
+		this.id = id;
+		this.nome = nome;
+		this.cidade = cidade;
+	}
+
+	
 	public Cliente() {
 
 	}
+
+
 
 	// gets
 
