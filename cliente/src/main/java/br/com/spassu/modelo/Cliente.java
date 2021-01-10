@@ -12,12 +12,6 @@ public class Cliente {
 
 	}
 
-	public Cliente(Integer id, String nome, String cidade) {
-		this.id = id;
-		this.nome = nome;
-		this.cidade = cidade;
-	}
-
 	// gets
 
 	public Integer getId() {

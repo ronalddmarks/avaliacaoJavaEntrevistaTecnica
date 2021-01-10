@@ -11,13 +11,8 @@ public class Compra {
 	
 
 	// construtor 
-	public Compra(Cliente cliente, Date data, String valor, String valorImposto) {
-		this.cliente = cliente;
-		this.data = data;
-		this.valor = valor;
-		this.valorImposto = valorImposto;
-	}
 
+	
 
 	// gets
 	
@@ -25,7 +20,7 @@ public class Compra {
 		return cliente;
 	}
 
-
+	
 	public Date getData() {
 		return data;
 	}
@@ -62,6 +57,15 @@ public class Compra {
 	public void setValorImposto(String valorImposto) {
 		this.valorImposto = valorImposto;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Compra [cliente=" + cliente + ", data=" + data + ", valor=" + valor + ", valorImposto=" + valorImposto
+				+ "]";
+	}
+	
+	
 	
 		
 

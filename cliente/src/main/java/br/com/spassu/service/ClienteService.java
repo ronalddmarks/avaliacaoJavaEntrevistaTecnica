@@ -109,6 +109,8 @@ public class ClienteService {
 			}
 		
 		}
+		
+		getMenu();
 			
 
 	}
@@ -147,13 +149,10 @@ public class ClienteService {
 			}
 		
 		}
-		
-		
+				
 		getMenu();
-		
-		
+				
 	}
-	
 	
 
 }
