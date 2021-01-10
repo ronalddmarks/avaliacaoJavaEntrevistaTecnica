@@ -36,6 +36,7 @@ public class ClienteService {
 			excluirCliente(line);
 			break;
 		case 5:
+			consultarCliente(line);
 			break;
 		case 6:
 			break;
@@ -44,9 +45,11 @@ public class ClienteService {
 		case 8:
 			break;
 		case 9:
+			System.exit(0);
 			break;
 
 		default:
+			System.out.println("Valor Invalido"); getMenu();
 			break;
 		}
 
@@ -131,6 +134,22 @@ public class ClienteService {
 	}
 	
 	public void consultarCliente(String valor) {
+
+		
+		String[] textoSeparado = valor.split(";");
+		
+		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
+			
+		for (int i = 0; i < listaClientes.size(); i++) {
+		
+    	if (listaClientes.get(i).getId() == id) {
+	    	   System.out.println(listaClientes.get(i).getId() + " " + listaClientes.get(i).getNome() + " " + listaClientes.get(i).getCidade());
+			}
+		
+		}
+		
+		
+		getMenu();
 		
 		
 	}

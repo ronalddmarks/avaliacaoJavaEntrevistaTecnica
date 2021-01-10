@@ -7,12 +7,8 @@ public class App {
 
 		System.out.println("Hello World!");
 
-		
-
 		ClienteService clienteService = new ClienteService();
-		
-	
-		
+			
 		clienteService.getMenu();
 		
 		
