@@ -5,20 +5,21 @@ public class Cliente {
 	private Integer id;
 	private String nome;
 	private String cidade;
-	
-	
-	//construtor
-	
+
+	// construtor
+
+	public Cliente() {
+
+	}
+
 	public Cliente(Integer id, String nome, String cidade) {
 		this.id = id;
 		this.nome = nome;
 		this.cidade = cidade;
 	}
 
-
-
 	// gets
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -30,7 +31,6 @@ public class Cliente {
 	public String getCidade() {
 		return cidade;
 	}
-
 
 	// sets
 
@@ -44,6 +44,12 @@ public class Cliente {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nome=" + nome + ", cidade=" + cidade + "]";
 	}
 	
 	
