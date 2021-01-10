@@ -30,8 +30,10 @@ public class ClienteService {
 			setClientes(line);
 			break;
 		case 3:
+			alteraCliente (line);
 			break;
 		case 4:
+			excluirCliente(line);
 			break;
 		case 5:
 			break;
@@ -50,7 +52,7 @@ public class ClienteService {
 
 	}
 
-	public String setClientes(String valor) {
+	public void setClientes(String valor) {
 
 		String[] textoSeparado = valor.split(";");
 
@@ -70,7 +72,7 @@ public class ClienteService {
 
 		getMenu();
 
-		return null;
+	
 	}
 
 	public void getClientes() {
@@ -86,6 +88,51 @@ public class ClienteService {
 		
 		getMenu();
 
+	}
+	
+	public void alteraCliente (String valor) {
+		
+			
+		String[] textoSeparado = valor.split(";");
+				
+		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
+			
+		for (int i = 0; i < listaClientes.size(); i++) {
+		
+    	if (listaClientes.get(i).getId() == id) {
+	    	    listaClientes.get(i).setNome(textoSeparado[2]);
+	    		listaClientes.get(i).setCidade(textoSeparado[3]);
+	    		System.out.println("Cliente " + id + " alterado");
+			}
+		
+		}
+			
+
+	}
+	
+	public void excluirCliente(String valor) {
+		
+			
+		String[] textoSeparado = valor.split(";");
+		
+		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
+			
+		for (int i = 0; i < listaClientes.size(); i++) {
+		
+    	if (listaClientes.get(i).getId() == id) {
+	    	    listaClientes.remove(i);
+	    		System.out.println("Cliente " + id + " excluído");
+			}
+		
+		}
+		
+		getMenu();
+		
+	}
+	
+	public void consultarCliente(String valor) {
+		
+		
 	}
 	
 	
