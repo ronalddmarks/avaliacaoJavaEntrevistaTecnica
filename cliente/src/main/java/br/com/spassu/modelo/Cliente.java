@@ -21,7 +21,6 @@ public class Cliente {
 	}
 
 
-
 	// gets
 
 	public Integer getId() {

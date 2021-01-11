@@ -30,8 +30,6 @@ public class ClienteService {
 	
 	}
 	
-	
-	
 	public void setClientes(String valor) {
 
 		String[] textoSeparado = valor.split(";");
@@ -49,8 +47,6 @@ public class ClienteService {
 		System.out.println(resposta);
 
 	}
-
-
 	
 	public void alteraCliente (String valor) {
 			
@@ -86,19 +82,16 @@ public class ClienteService {
 	}
 	
 	public void consultarCliente(String valor) {
-
 		
 		String[] textoSeparado = valor.split(";");
 		
 		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
-			
-		for (int i = 0; i < listaClientes.size(); i++) {
+
+		umCliente = listaClientes.recuperar(id);
 		
-    	if (listaClientes.get(i).getId() == id) {
-	    	   System.out.println(listaClientes.get(i).getId() + " " + listaClientes.get(i).getNome() + " " + listaClientes.get(i).getCidade());
-			}
-		
-		}
+		System.out.println(umCliente.getId() + " " + umCliente.getNome() + " " + umCliente.getCidade());
+	
+
 					
 	}
 	
