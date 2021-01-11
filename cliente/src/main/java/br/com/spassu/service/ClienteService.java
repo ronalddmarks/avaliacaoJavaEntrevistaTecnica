@@ -57,8 +57,7 @@ public class ClienteService {
 		umCliente = listaClientes.recuperar(id);
 
 		if (umCliente != null) {
-			System.out.println("entrou!");
-			String novoNome = textoSeparado[2].replaceAll(" ", "");
+		    String novoNome = textoSeparado[2].replaceAll(" ", "");
 			String novaCidade = textoSeparado[3].replaceAll(" ", "");
 			
 			umCliente.setNome(novoNome);

@@ -6,8 +6,7 @@ import br.com.spassu.service.ClienteService;
 public class App {
 	public static void main(String[] args) {
 
-
-		System.out.println("Hello World!");
+//		System.out.println("Hello World!");
 
 		ClienteService clienteService = new ClienteService();
 
@@ -15,9 +14,7 @@ public class App {
 
 		boolean continua = true;
 		while (continua) {
-
-			System.out.println("Adicione os dados do cliente");
-
+	
 			String line = scan.nextLine();
 
 			String[] textoSeparado = line.split(";");
@@ -50,7 +47,6 @@ public class App {
 				break;
 
 			default:
-				System.out.println("Valor Invalido");
 				break;
 			}
 
