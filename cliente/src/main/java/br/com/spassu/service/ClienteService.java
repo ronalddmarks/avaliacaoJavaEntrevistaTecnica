@@ -1,13 +1,10 @@
 package br.com.spassu.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.spassu.modelo.Cliente;
 
 public class ClienteService {
 	
-	ListaDeObjetos<Cliente> listaClientes = new ListaDeObjetos<Cliente>(0);
+	public static ListaDeObjetos<Cliente> listaClientes = new ListaDeObjetos<Cliente>(0);
 
 	Cliente umCliente;
 	

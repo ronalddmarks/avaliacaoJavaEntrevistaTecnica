@@ -6,8 +6,8 @@ public class Compra {
 
 	private Cliente cliente;
 	private Date data;
-	private String valor;
-	private String valorImposto;
+	private double valor;
+	private double valorImposto;
 	
 
 	// construtor 
@@ -15,15 +15,15 @@ public class Compra {
 	public Compra() {
 	}
 	
-	
-	public Compra(Cliente cliente, Date data, String valor) {
+		
+	public Compra(Cliente cliente, Date data, double valor, double valorImposto) {
 		this.cliente = cliente;
 		this.data = data;
 		this.valor = valor;
-		
+		this.valorImposto = valorImposto;
 	}
-	
-	
+
+
 
 	// gets
 	
@@ -31,21 +31,16 @@ public class Compra {
 		return cliente;
 	}
 
-	
-
-
-
 	public Date getData() {
 		return data;
 	}
 
-
-	public String getValor() {
+	public double getValor() {
 		return valor;
 	}
 
 
-	public String getValorImposto() {
+	public double getValorImposto() {
 		return valorImposto;
 	}
 
@@ -63,18 +58,17 @@ public class Compra {
 	}
 
 
-	public void setValor(String valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 
 
-	public void setValorImposto(String valorImposto) {
+	public void setValorImposto(double valorImposto) {
 		this.valorImposto = valorImposto;
 	}
-	
-	
-	
 
+	
+	
 
 	@Override
 	public String toString() {
