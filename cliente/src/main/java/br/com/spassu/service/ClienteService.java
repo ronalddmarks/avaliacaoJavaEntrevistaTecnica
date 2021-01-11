@@ -27,7 +27,7 @@ public class ClienteService {
 	
 	}
 	
-	public void setClientes(String valor) {
+	public String setClientes(String valor) {
 
 		String[] textoSeparado = valor.split(";");
 		
@@ -41,11 +41,11 @@ public class ClienteService {
 
 		String resposta = "Cliente " + umCliente.getId() + " incluído";
 
-		System.out.println(resposta);
+		return resposta;
 
 	}
 	
-	public void alteraCliente (String valor) {
+	public String alteraCliente (String valor) {
 			
 		String[] textoSeparado = valor.split(";");
 				
@@ -60,14 +60,18 @@ public class ClienteService {
 			umCliente.setNome(novoNome);
 			umCliente.setCidade(novaCidade);
 			
-			System.out.println("Cliente " + umCliente.getId()  + " alterado");
+			String resposta = "Cliente " + umCliente.getId()  + " alterado";
+			
+			return resposta;
 			
 		}
+		
+		return null;
 	
 		
 	}
 	
-	public void excluirCliente(String valor) {
+	public String excluirCliente(String valor) {
 			
 		String[] textoSeparado = valor.split(";");
 		
@@ -75,11 +79,13 @@ public class ClienteService {
 		
 	    listaClientes.remover(id);
 	    
-	    System.out.println("Cliente " + id + " excluído");
+	    String resposta = "Cliente " + id + " excluído";
+	    
+	    return resposta;
 		
 	}
 	
-	public void consultarCliente(String valor) {
+	public String consultarCliente(String valor) {
 		
 		String[] textoSeparado = valor.split(";");
 		
@@ -87,7 +93,9 @@ public class ClienteService {
 
 		umCliente = listaClientes.recuperar(id);
 		
-		System.out.println(umCliente.getId() + " " + umCliente.getNome() + " " + umCliente.getCidade());
+		String resposta = umCliente.getId() + " " + umCliente.getNome() + " " + umCliente.getCidade();
+		
+		return resposta;
 	
 
 					

@@ -15,7 +15,7 @@ public class CompaService {
 	Compra umaCompra;
 	Cliente umCliente;
 
-	public void setCompra(String valor) throws ParseException {
+	public String setCompra(String valor) throws ParseException {
 
 		String[] textoSeparado = valor.split(";");
 		double valorImposto = 0;
@@ -42,14 +42,13 @@ public class CompaService {
 
 		}
 
-		umCliente.getCidade().substring(umCliente.getCidade().length() - 1);
-
 		umaCompra = new Compra(umCliente, data, valorCompra, valorImposto);
 
 		listaCompras.adicionar(umaCompra);
+		
+		return "Compra para o cliente " + umaCompra.getCliente().getId() + " incluída";
 
-		System.out.println("Compra para o cliente " + umaCompra.getCliente().getId() + " incluída");
-
+	
 	}
 
 	public void listarCompras() {
@@ -63,11 +62,10 @@ public class CompaService {
 					   	      " | " + fmt.format(umaCompra.getData()) +
 						      " | R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) +
 						      " | R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValorImposto()) +
-					          " |");
-			
-			System.out.println("| " + 
-							   "Total Compras: R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) +
+					          " | \n" +
+					          "| Total Compras: R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) +
 			                   " |");
+
 
 			umaCompra = listaCompras.recuperarProximo();
 
@@ -79,17 +77,18 @@ public class CompaService {
 		
 		umaCompra = listaCompras.recuperarPrimeiro();
 		
-		if (umaCompra != null && umaCompra.getValor() > 1000) {
+		while (umaCompra != null && umaCompra.getValor() > 1000) {
 			
 			System.out.println("| " + umaCompra.getCliente().getId() +
 	                  " | " + umaCompra.getCliente().getNome() +
-			   	      " | R$ " + umaCompra.getValor() +
+			   	      " | R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) +
 				      " |");
 			
+			umaCompra = listaCompras.recuperarProximo();
 		
 		}
 		
-		umaCompra = listaCompras.recuperarProximo();
+		
 		
 
 	}

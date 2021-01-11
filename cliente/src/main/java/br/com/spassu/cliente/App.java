@@ -28,19 +28,19 @@ public class App {
 				clienteService.getClientes();
 				break;
 			case 2:
-				clienteService.setClientes(line);
+				System.out.println(clienteService.setClientes(line));
 				break;
 			case 3:
-				clienteService.alteraCliente(line);
+				System.out.println(clienteService.alteraCliente(line));
 				break;
 			case 4:
-				clienteService.excluirCliente(line);
+				System.out.println(clienteService.excluirCliente(line));
 				break;
 			case 5:
-				clienteService.consultarCliente(line);
+				System.out.println(clienteService.consultarCliente(line));
 				break;
 			case 6:
-				compraService.setCompra(line);
+				System.out.println(compraService.setCompra(line));
 				break;
 			case 7:
 				compraService.listarCompras();
