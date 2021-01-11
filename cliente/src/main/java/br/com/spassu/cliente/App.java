@@ -43,6 +43,7 @@ public class App {
 				compraService.setCompra(line);
 				break;
 			case 7:
+				compraService.listarCompras(line);
 				break;
 			case 8:
 				break;
