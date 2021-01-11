@@ -57,12 +57,9 @@ public class ClienteService {
 		String[] textoSeparado = valor.split(";");
 				
 		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
-		System.out.println(id);
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 		umCliente = listaClientes.recuperar(id);
-		
-		System.out.println(umCliente);
-		
+
 		if (umCliente != null) {
 			System.out.println("entrou!");
 			String novoNome = textoSeparado[2].replaceAll(" ", "");
@@ -72,39 +69,19 @@ public class ClienteService {
 			umCliente.setCidade(novaCidade);
 			
 		}
-		
-		
-		
-			
-//		for (int i = 0; i < listaClientes.size(); i++) {
-//		
-//    	if (listaClientes.get(i).getId() == id) {
-//	    	    listaClientes.get(i).setNome(textoSeparado[2]);
-//	    		listaClientes.get(i).setCidade(textoSeparado[3]);
-//	    		System.out.println("Cliente " + id + " alterado");
-//			}
-//		
-//		}
+	
 		
 	}
 	
 	public void excluirCliente(String valor) {
-		
 			
 		String[] textoSeparado = valor.split(";");
 		
 		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
-			
-		for (int i = 0; i < listaClientes.size(); i++) {
 		
-    	if (listaClientes.get(i).getId() == id) {
-	    	    listaClientes.remove(i);
-	    		System.out.println("Cliente " + id + " excluído");
-			}
-		
-		}
-		
-		
+	    listaClientes.remover(id);
+	    
+	    System.out.println("Cliente " + id + " excluído");
 		
 	}
 	
