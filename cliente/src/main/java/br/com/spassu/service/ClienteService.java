@@ -63,6 +63,8 @@ public class ClienteService {
 			umCliente.setNome(novoNome);
 			umCliente.setCidade(novaCidade);
 			
+			System.out.println("Cliente " + umCliente.getId()  + " alterado");
+			
 		}
 	
 		

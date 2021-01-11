@@ -21,7 +21,7 @@ public class App {
 			String line = scan.nextLine();
 
 			String[] textoSeparado = line.split(";");
-			int menu = Integer.parseInt(textoSeparado[0]);
+			int menu = Integer.parseInt(textoSeparado[0].replaceAll(" ", ""));
 
 			switch (menu) {
 			case 1:
