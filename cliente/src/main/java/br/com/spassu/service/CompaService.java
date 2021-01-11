@@ -32,8 +32,7 @@ public class CompaService {
 		valorCompraString = valorCompraString.replaceAll(",", "");
 
 		double valorCompra = Double.parseDouble(valorCompraString);
-		System.out.println(valorCompra);
-
+		
 		if (umCliente.getCidade().substring(umCliente.getCidade().length() - 1).equals("a")) {
 			valorImposto = (valorCompra * 0.10);
 		} else if (umCliente.getCidade().substring(umCliente.getCidade().length() - 1).equals("o")) {
@@ -54,11 +53,19 @@ public class CompaService {
 	public void listarCompras(String valor) {
 
 		umaCompra = listaCompras.recuperarPrimeiro();
+		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");   
 
 		while (umaCompra != null) {
-			System.out.println(// "| " + umaCompra.getCliente().getId() +
-					// " | " + umaCompra.getCliente().getNome() +
-					" | R$ " + umaCompra.getValor() + " |");
+			System.out.println("| " + umaCompra.getCliente().getId() +
+			                  " | " + umaCompra.getCliente().getNome() +
+					   	      " | " + fmt.format(umaCompra.getData()) +
+						      " | R$ " + umaCompra.getValor() +
+						      " | R$ " + umaCompra.getValorImposto() +
+					          " |");
+			
+			System.out.println("| " + 
+							   "Total Compras: R$ " + umaCompra.getValor() +
+			                   " |");
 
 			umaCompra = listaCompras.recuperarProximo();
 
