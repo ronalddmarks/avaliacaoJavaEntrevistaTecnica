@@ -1,14 +1,17 @@
 package br.com.spassu.cliente;
+import java.text.ParseException;
 import java.util.Scanner;
 
 import br.com.spassu.service.ClienteService;
+import br.com.spassu.service.CompaService;
 
 public class App {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
 //		System.out.println("Hello World!");
 
 		ClienteService clienteService = new ClienteService();
+		CompaService compraService = new CompaService();
 
 		Scanner scan = new Scanner(System.in);
 
@@ -37,6 +40,7 @@ public class App {
 				clienteService.consultarCliente(line);
 				break;
 			case 6:
+				compraService.setCompra(line);
 				break;
 			case 7:
 				break;

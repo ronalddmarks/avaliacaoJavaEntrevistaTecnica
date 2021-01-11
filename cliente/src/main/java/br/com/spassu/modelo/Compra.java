@@ -11,7 +11,18 @@ public class Compra {
 	
 
 	// construtor 
-
+	
+	public Compra() {
+	}
+	
+	
+	public Compra(Cliente cliente, Date data, String valor) {
+		this.cliente = cliente;
+		this.data = data;
+		this.valor = valor;
+		
+	}
+	
 	
 
 	// gets
@@ -21,6 +32,9 @@ public class Compra {
 	}
 
 	
+
+
+
 	public Date getData() {
 		return data;
 	}
@@ -57,6 +71,9 @@ public class Compra {
 	public void setValorImposto(String valorImposto) {
 		this.valorImposto = valorImposto;
 	}
+	
+	
+	
 
 
 	@Override
