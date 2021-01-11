@@ -33,7 +33,7 @@ public class ClienteService {
 		
 		int id = Integer.parseInt(textoSeparado[1].replaceAll(" ", ""));
 		String nome = textoSeparado[2].replaceAll(" ", "");
-		String cidade = textoSeparado[3].replaceAll(" ", "");
+		String cidade = textoSeparado[3].trim().replaceAll("\\s{2,}", " ");
 	
 		umCliente  = new Cliente(id, nome, cidade);
 		
@@ -55,7 +55,7 @@ public class ClienteService {
 
 		if (umCliente != null) {
 		    String novoNome = textoSeparado[2].replaceAll(" ", "");
-			String novaCidade = textoSeparado[3].replaceAll(" ", "");
+			String novaCidade = textoSeparado[3].trim().replaceAll("\\s{2,}", " ");
 			
 			umCliente.setNome(novoNome);
 			umCliente.setCidade(novaCidade);
