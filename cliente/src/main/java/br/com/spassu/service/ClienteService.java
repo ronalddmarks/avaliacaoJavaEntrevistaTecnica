@@ -23,27 +23,18 @@ public class ClienteService {
 			                        " | " + umCliente.getNome() + 
 			                        " | " + umCliente.getCidade() + 
 			                        " |");
-		
-		
+				
 		umCliente = listaClientes.recuperarProximo();
+		
 		}
-
-		System.out.println("entrou!!!!!!!");
-
-//		for (int i = 0; i < listaClientes.size(); i++) {
-//			System.out.println("teste");
-//			System.out.println("| " + listaClientes.get(i).getId() + " |" + listaClientes.get(i).getNome() + " |"
-//					+ listaClientes.get(i).getCidade() + " | ");
-//		}
 	
 	}
+	
 	
 	
 	public void setClientes(String valor) {
 
 		String[] textoSeparado = valor.split(";");
-
-//		 System.out.println(Arrays.toString(textoSeparado));
 		
 		int id = Integer.parseInt(textoSeparado[1].replaceAll(" ", ""));
 		String nome = textoSeparado[2].replaceAll(" ", "");
@@ -62,21 +53,38 @@ public class ClienteService {
 
 	
 	public void alteraCliente (String valor) {
-		
 			
 		String[] textoSeparado = valor.split(";");
 				
 		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
+		System.out.println(id);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		umCliente = listaClientes.recuperar(id);
+		
+		System.out.println(umCliente);
+		
+		if (umCliente != null) {
+			System.out.println("entrou!");
+			String novoNome = textoSeparado[2].replaceAll(" ", "");
+			String novaCidade = textoSeparado[3].replaceAll(" ", "");
 			
-		for (int i = 0; i < listaClientes.size(); i++) {
-		
-    	if (listaClientes.get(i).getId() == id) {
-	    	    listaClientes.get(i).setNome(textoSeparado[2]);
-	    		listaClientes.get(i).setCidade(textoSeparado[3]);
-	    		System.out.println("Cliente " + id + " alterado");
-			}
-		
+			umCliente.setNome(novoNome);
+			umCliente.setCidade(novaCidade);
+			
 		}
+		
+		
+		
+			
+//		for (int i = 0; i < listaClientes.size(); i++) {
+//		
+//    	if (listaClientes.get(i).getId() == id) {
+//	    	    listaClientes.get(i).setNome(textoSeparado[2]);
+//	    		listaClientes.get(i).setCidade(textoSeparado[3]);
+//	    		System.out.println("Cliente " + id + " alterado");
+//			}
+//		
+//		}
 		
 	}
 	

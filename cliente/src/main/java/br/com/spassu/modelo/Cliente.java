@@ -49,6 +49,14 @@ public class Cliente {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
+	
+	
+	public boolean equals (Object num)
+	{		
+		Integer n = new Integer(id);
+		return n.equals(num);
+		
+	}
 
 	
 	@Override
