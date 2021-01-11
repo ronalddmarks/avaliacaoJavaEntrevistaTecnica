@@ -43,9 +43,10 @@ public class App {
 				compraService.setCompra(line);
 				break;
 			case 7:
-				compraService.listarCompras(line);
+				compraService.listarCompras();
 				break;
 			case 8:
+				compraService.listarClientesEspeciais();
 				break;
 			case 9:
 				System.exit(0);

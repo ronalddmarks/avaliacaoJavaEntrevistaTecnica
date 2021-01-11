@@ -1,5 +1,6 @@
 package br.com.spassu.service;
 
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +30,8 @@ public class CompaService {
 		umCliente = ClienteService.listaClientes.recuperar(idClienteCadastrado);
 
 		valorCompraString = valorCompraString.replaceAll(" ", "");
-		valorCompraString = valorCompraString.replaceAll(",", "");
+		valorCompraString = valorCompraString.replace(".", "");
+		valorCompraString = valorCompraString.replaceAll(",", ".");
 
 		double valorCompra = Double.parseDouble(valorCompraString);
 		
@@ -50,7 +52,7 @@ public class CompaService {
 
 	}
 
-	public void listarCompras(String valor) {
+	public void listarCompras() {
 
 		umaCompra = listaCompras.recuperarPrimeiro();
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");   
@@ -59,17 +61,36 @@ public class CompaService {
 			System.out.println("| " + umaCompra.getCliente().getId() +
 			                  " | " + umaCompra.getCliente().getNome() +
 					   	      " | " + fmt.format(umaCompra.getData()) +
-						      " | R$ " + umaCompra.getValor() +
-						      " | R$ " + umaCompra.getValorImposto() +
+						      " | R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) +
+						      " | R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValorImposto()) +
 					          " |");
 			
 			System.out.println("| " + 
-							   "Total Compras: R$ " + umaCompra.getValor() +
+							   "Total Compras: R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) +
 			                   " |");
 
 			umaCompra = listaCompras.recuperarProximo();
 
 		}
+
+	}
+	
+	public void listarClientesEspeciais() {
+		
+		umaCompra = listaCompras.recuperarPrimeiro();
+		
+		if (umaCompra != null && umaCompra.getValor() > 1000) {
+			
+			System.out.println("| " + umaCompra.getCliente().getId() +
+	                  " | " + umaCompra.getCliente().getNome() +
+			   	      " | R$ " + umaCompra.getValor() +
+				      " |");
+			
+		
+		}
+		
+		umaCompra = listaCompras.recuperarProximo();
+		
 
 	}
 
