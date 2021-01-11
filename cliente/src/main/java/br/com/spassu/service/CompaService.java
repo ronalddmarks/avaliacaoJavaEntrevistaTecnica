@@ -9,6 +9,7 @@ import java.util.Date;
 
 import br.com.spassu.modelo.Cliente;
 import br.com.spassu.modelo.Compra;
+import br.com.spassu.util.ListaDeObjetos;
 
 public class CompaService {
 
@@ -108,7 +109,7 @@ public class CompaService {
 			}
 		}
 
-		// ajuste do tamanho do vetor 
+		// ajuste do tamanho do vetor resultante
 		unicos = Arrays.copyOf(unicos, qtd);
 
 		for (int i = 0; i < unicos.length; i++) {

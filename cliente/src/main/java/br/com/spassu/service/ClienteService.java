@@ -1,6 +1,7 @@
 package br.com.spassu.service;
 
 import br.com.spassu.modelo.Cliente;
+import br.com.spassu.util.ListaDeObjetos;
 
 public class ClienteService {
 	

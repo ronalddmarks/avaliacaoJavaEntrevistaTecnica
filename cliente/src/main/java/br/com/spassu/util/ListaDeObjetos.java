@@ -1,4 +1,4 @@
-package br.com.spassu.service;
+package br.com.spassu.util;
 import java.util.*;
 public class ListaDeObjetos<E>
 {	
