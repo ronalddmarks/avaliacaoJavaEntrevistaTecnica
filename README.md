@@ -1,4 +1,4 @@
-Fui subimtido a uma avaliação para trabalhar em uma empresa como desenvolvedor Java o desafio foi comcluido e estou deixando a resposta registrada para consulta futura.
+Fui subimetido a uma avaliação pratica, com objetivo de trabalhar em uma empresa como desenvolvedor Java. O desafio foi comcluido e estou deixando a resposta registrada para consulta futura.
 
 # Avaliação Java
 
