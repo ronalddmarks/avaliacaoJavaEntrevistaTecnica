@@ -1,5 +1,8 @@
 package br.com.spassu.cliente;
+
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import br.com.spassu.service.ClienteService;
@@ -12,12 +15,13 @@ public class App {
 
 		ClienteService clienteService = new ClienteService();
 		CompaService compraService = new CompaService();
+		List<String> saida = new ArrayList<String>();
 
 		Scanner scan = new Scanner(System.in);
 
 		boolean continua = true;
 		while (continua) {
-	
+
 			String line = scan.nextLine();
 
 			String[] textoSeparado = line.split(";");
@@ -25,7 +29,13 @@ public class App {
 
 			switch (menu) {
 			case 1:
-				clienteService.getClientes();
+
+				saida = clienteService.getClientes();
+
+				for (int i = 0; i < saida.size(); i++) {
+					System.out.println(saida.get(i));
+				}
+
 				break;
 			case 2:
 				System.out.println(clienteService.setClientes(line));
@@ -43,10 +53,20 @@ public class App {
 				System.out.println(compraService.setCompra(line));
 				break;
 			case 7:
-				compraService.listarCompras();
+				saida = compraService.listarCompras();
+
+				for (int i = 0; i < saida.size(); i++) {
+					System.out.println(saida.get(i));
+				}
+
 				break;
 			case 8:
-				compraService.listarClientesEspeciais();
+				saida = compraService.listarClientesEspeciais();
+
+				for (int i = 0; i < saida.size(); i++) {
+					System.out.println(saida.get(i));
+				}
+				
 				break;
 			case 9:
 				System.exit(0);

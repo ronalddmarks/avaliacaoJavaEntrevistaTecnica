@@ -4,6 +4,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.com.spassu.modelo.Cliente;
 import br.com.spassu.modelo.Compra;
@@ -40,33 +41,40 @@ public class CompaService {
 		umaCompra = new Compra(umCliente, data, valorCompra, valorImposto);
 
 		listaCompras.adicionar(umaCompra);
-		
 
-		return "Compra para o cliente " + umaCompra.getCliente().getId() + " incluída";
+		String resposta = "Compra para o cliente " + umaCompra.getCliente().getId() + " incluída";
+
+		return resposta;
 
 	}
 
-	public void listarCompras() {
+	public List<String> listarCompras() {
 
 		umaCompra = listaCompras.recuperarPrimeiro();
+		
+		List<String> listaResposta = new ArrayList<String>();
 
 		while (umaCompra != null) {
-			System.out.println("| " + umaCompra.getCliente().getId() + " | " + umaCompra.getCliente().getNome() + " | "
+			
+			listaResposta.add("| " + umaCompra.getCliente().getId() + " | " + umaCompra.getCliente().getNome() + " | "
 					+ formataDados.getDataFormatada(umaCompra.getData()) + " | R$ "
 					+ NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) + " | R$ "
 					+ NumberFormat.getCurrencyInstance().format(umaCompra.getValorImposto()) + " | \n"
 					+ "| Total Compras: R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) + " |");
-
+						
 			umaCompra = listaCompras.recuperarProximo();
 		}
+		
+		return listaResposta;
 
 	}
 
-	public void listarClientesEspeciais() {
+	public List<String> listarClientesEspeciais() {
 
 		umaCompra = listaCompras.recuperarPrimeiro();
 
 		ArrayList<Compra> compras = new ArrayList<Compra>();
+		List<String> listaResposta = new ArrayList<String>();
 
 		while (umaCompra != null) {
 			compras.add(umaCompra);
@@ -90,13 +98,16 @@ public class CompaService {
 			if (somaValorCompras > 1000) {
 
 				umCliente = ClienteService.listaClientes.recuperar(vetIdUsuariosCompra[i]);
-
-				System.out.println("| " + umCliente.getId() + " | " + umCliente.getNome() + " | R$ "
+				
+				listaResposta.add("| " + umCliente.getId() + " | " + umCliente.getNome() + " | R$ "
 						+ NumberFormat.getCurrencyInstance().format(somaValorCompras) + " |");
+		
 
 			}
 
 		}
+		
+		return listaResposta;
 
 	}
 
