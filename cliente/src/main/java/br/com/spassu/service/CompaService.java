@@ -3,18 +3,17 @@ package br.com.spassu.service;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 import br.com.spassu.modelo.Cliente;
 import br.com.spassu.modelo.Compra;
-import br.com.spassu.util.FormataCaractereUtil;
+import br.com.spassu.util.FormataDadosUtil;
 import br.com.spassu.util.ListaDeObjetos;
 
 public class CompaService {
 
 	ListaDeObjetos<Compra> listaCompras = new ListaDeObjetos<Compra>(0);
-	FormataCaractereUtil formataCaractere = new FormataCaractereUtil();
+	FormataDadosUtil formataDados = new FormataDadosUtil();
 
 	Compra umaCompra;
 	Cliente umCliente;
@@ -28,11 +27,11 @@ public class CompaService {
 		String dataCompraString = textoSeparado[2];
 		String valorCompraString = textoSeparado[3];
 
-		Date data = formataCaractere.formataData(dataCompraString);
+		Date data = formataDados.formataData(dataCompraString);
 
 		umCliente = ClienteService.listaClientes.recuperar(idClienteCadastrado);
 
-		double valorCompra = formataCaractere.removePontuacao(valorCompraString);
+		double valorCompra = formataDados.removePontuacao(valorCompraString);
 
 		if (umCliente.getCidade().substring(umCliente.getCidade().length() - 1).equals("a")) {
 			valorImposto = (valorCompra * 0.10);
@@ -55,13 +54,12 @@ public class CompaService {
 
 		while (umaCompra != null) {
 			System.out.println("| " + umaCompra.getCliente().getId() + " | " + umaCompra.getCliente().getNome() + " | "
-					+ formataCaractere.getDataFormatada(umaCompra.getData()) + " | R$ "
+					+ formataDados.getDataFormatada(umaCompra.getData()) + " | R$ "
 					+ NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) + " | R$ "
 					+ NumberFormat.getCurrencyInstance().format(umaCompra.getValorImposto()) + " | \n"
 					+ "| Total Compras: R$ " + NumberFormat.getCurrencyInstance().format(umaCompra.getValor()) + " |");
 
 			umaCompra = listaCompras.recuperarProximo();
-
 		}
 
 	}
@@ -75,46 +73,28 @@ public class CompaService {
 		while (umaCompra != null) {
 			compras.add(umaCompra);
 			umaCompra = listaCompras.recuperarProximo();
-
 		}
 
-		int original[] = new int[compras.size()];
+		int vetIdUsuariosCompraOriginal[] = new int[compras.size()];
 		for (int i = 0; i < compras.size(); i++) {
-			original[i] = compras.get(i).getCliente().getId();
+			vetIdUsuariosCompraOriginal[i] = compras.get(i).getCliente().getId();
 		}
 
-		// remover repetidos
-		int[] unicos = new int[original.length];
-		int qtd = 0;
-		for (int i = 0; i < original.length; i++) {
-			boolean existe = false;
-			for (int j = 0; j < qtd; j++) {
-				if (unicos[j] == original[i]) {
-					existe = true;
-					break;
-				}
-			}
-			if (!existe) {
-				unicos[qtd++] = original[i];
-			}
-		}
+		int vetIdUsuariosCompra[] = formataDados.removeValorDuplicadoVet(vetIdUsuariosCompraOriginal);
 
-		// ajuste do tamanho do vetor resultante
-		unicos = Arrays.copyOf(unicos, qtd);
-
-		for (int i = 0; i < unicos.length; i++) {
-			double soma = 0;
+		for (int i = 0; i < vetIdUsuariosCompra.length; i++) {
+			double somaValorCompras = 0;
 			for (int j = 0; j < compras.size(); j++) {
-				if (compras.get(j).getCliente().getId() == unicos[i]) {
-					soma += compras.get(j).getValor();
+				if (compras.get(j).getCliente().getId() == vetIdUsuariosCompra[i]) {
+					somaValorCompras += compras.get(j).getValor();
 				}
 			}
-			if (soma > 1000) {
+			if (somaValorCompras > 1000) {
 
-				umCliente = ClienteService.listaClientes.recuperar(unicos[i]);
+				umCliente = ClienteService.listaClientes.recuperar(vetIdUsuariosCompra[i]);
 
 				System.out.println("| " + umCliente.getId() + " | " + umCliente.getNome() + " | R$ "
-						+ NumberFormat.getCurrencyInstance().format(soma) + " |");
+						+ NumberFormat.getCurrencyInstance().format(somaValorCompras) + " |");
 
 			}
 
