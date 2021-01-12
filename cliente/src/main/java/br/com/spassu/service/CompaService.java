@@ -21,17 +21,14 @@ public class CompaService {
 	public String setCompra(String valor) throws ParseException {
 
 		String[] textoSeparado = valor.split(";");
-		double valorImposto = 0;
 
-		int idClienteCadastrado = Integer.parseInt(textoSeparado[1].replaceAll(" ", ""));
-		String dataCompraString = textoSeparado[2];
-		String valorCompraString = textoSeparado[3];
-
-		Date data = formataDados.formataData(dataCompraString);
+		int idClienteCadastrado = formataDados.convertStringToInt(textoSeparado[1]);
+		Date data = formataDados.formataData(textoSeparado[2]);
+		double valorCompra = formataDados.removePontuacao(textoSeparado[3]);
 
 		umCliente = ClienteService.listaClientes.recuperar(idClienteCadastrado);
 
-		double valorCompra = formataDados.removePontuacao(valorCompraString);
+		double valorImposto = 0;
 
 		if (umCliente.getCidade().substring(umCliente.getCidade().length() - 1).equals("a")) {
 			valorImposto = (valorCompra * 0.10);
@@ -43,6 +40,7 @@ public class CompaService {
 		umaCompra = new Compra(umCliente, data, valorCompra, valorImposto);
 
 		listaCompras.adicionar(umaCompra);
+		
 
 		return "Compra para o cliente " + umaCompra.getCliente().getId() + " incluída";
 

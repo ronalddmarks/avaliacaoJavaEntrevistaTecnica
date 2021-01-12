@@ -1,11 +1,13 @@
 package br.com.spassu.service;
 
 import br.com.spassu.modelo.Cliente;
+import br.com.spassu.util.FormataDadosUtil;
 import br.com.spassu.util.ListaDeObjetos;
 
 public class ClienteService {
 	
 	public static ListaDeObjetos<Cliente> listaClientes = new ListaDeObjetos<Cliente>(0);
+	FormataDadosUtil formataDados = new FormataDadosUtil();
 
 	Cliente umCliente;
 	
@@ -32,9 +34,9 @@ public class ClienteService {
 
 		String[] textoSeparado = valor.split(";");
 		
-		int id = Integer.parseInt(textoSeparado[1].replaceAll(" ", ""));
-		String nome = textoSeparado[2].replaceAll(" ", "");
-		String cidade = textoSeparado[3].trim().replaceAll("\\s{2,}", " ");
+		int id = formataDados.convertStringToInt(textoSeparado[1]);
+		String nome = formataDados.removeEspacoString(textoSeparado[2]);
+		String cidade = formataDados.removerEspacoExtremidadeString(textoSeparado[3]);
 	
 		umCliente  = new Cliente(id, nome, cidade);
 		
@@ -50,13 +52,13 @@ public class ClienteService {
 			
 		String[] textoSeparado = valor.split(";");
 				
-		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
+		int id = formataDados.convertStringToInt(textoSeparado[1]);
 
 		umCliente = listaClientes.recuperar(id);
 
 		if (umCliente != null) {
-		    String novoNome = textoSeparado[2].replaceAll(" ", "");
-			String novaCidade = textoSeparado[3].trim().replaceAll("\\s{2,}", " ");
+		    String novoNome = formataDados.removeEspacoString(textoSeparado[2]);
+			String novaCidade = formataDados.removerEspacoExtremidadeString(textoSeparado[3]);
 			
 			umCliente.setNome(novoNome);
 			umCliente.setCidade(novaCidade);
@@ -76,7 +78,7 @@ public class ClienteService {
 			
 		String[] textoSeparado = valor.split(";");
 		
-		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
+		int id = formataDados.convertStringToInt(textoSeparado[1]);
 		
 	    listaClientes.remover(id);
 	    
@@ -90,16 +92,14 @@ public class ClienteService {
 		
 		String[] textoSeparado = valor.split(";");
 		
-		int id = (Integer.parseInt((textoSeparado[1]).replaceAll(" ", "")));
+		int id = formataDados.convertStringToInt(textoSeparado[1]);
 
 		umCliente = listaClientes.recuperar(id);
 		
 		String resposta = umCliente.getId() + " " + umCliente.getNome() + " " + umCliente.getCidade();
 		
 		return resposta;
-	
-
-					
+						
 	}
 	
 
