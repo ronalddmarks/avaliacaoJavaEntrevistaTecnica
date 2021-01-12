@@ -115,13 +115,13 @@ public class CompaService {
 		for (int i = 0; i < unicos.length; i++) {
 			double soma = 0;
 			for (int j = 0; j < compras.size(); j++) {
-				if (compras.get(j).getCliente().getId() == i) {
+				if (compras.get(j).getCliente().getId() == unicos[i]) {
 					soma += compras.get(j).getValor();
 				}
 			}
 			if (soma > 1000) {
 
-				umCliente = ClienteService.listaClientes.recuperar(i);
+				umCliente = ClienteService.listaClientes.recuperar(unicos[i]);
 
 				System.out.println("| " + umCliente.getId() + " | " + umCliente.getNome() + " | R$ "
 						+ NumberFormat.getCurrencyInstance().format(soma) + " |");
