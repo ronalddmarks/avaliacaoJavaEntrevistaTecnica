@@ -1,4 +1,4 @@
-2; 0; João; Vila Velha# Cadastro de Cliente
+# Cadastro de Cliente
 
 Essa questão tem como objetivo provar sua capacidade de utilizar abstração, herança e polimorfismo. Nela você terá de fazer um aplicativo do console que deve ler e imprimir **EXTRITAMENTE** como demonstrado nos exemplos. Também será necessário salvar, deletar e obter dados em memória, utilize boas práticas de programção para separar as responsabilidades em camadas.
 
