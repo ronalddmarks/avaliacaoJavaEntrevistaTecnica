@@ -73,7 +73,7 @@ public class CompaService {
 
 		umaCompra = listaCompras.recuperarPrimeiro();
 
-		ArrayList<Compra> compras = new ArrayList<Compra>();
+		List<Compra> compras = new ArrayList<Compra>();
 		List<String> listaResposta = new ArrayList<String>();
 
 		while (umaCompra != null) {
